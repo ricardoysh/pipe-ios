@@ -20,10 +20,18 @@ jobs:
 
       - name: check archyteture
         run: uname -a
-  
+  ## build da aplicacao ##
   build:
     name: build-ios
     needs: [init]
     uses: ricardoysh/pipeline-core/.github/workflows/build-ios.yml@main
-          
-        
+  ## escaneamento de cod com sonar ##        
+  sonar:
+    name: run sonar scan
+    needs: [build]
+    uses: ricardoysh/pipeline-core/.github/workflows/sonar-ios.yml@main
+  ## ofuscacao de codigo ##
+  obfuscate:
+    name: run obfuscate code
+    needs: [sonar]
+    uses: ricardoysh/pipeline-core/.github/workflows/obfuscate-ios.yml@main
