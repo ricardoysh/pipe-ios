@@ -22,7 +22,7 @@ jobs:
         run: uname -a
   
   build-ios:
-    - name: build ios
+    - name: build
       needs: [init]
       uses: ricardoysh/pipeline-core/.github/workflows/build-ios.yml@main
           
