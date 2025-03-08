@@ -12,8 +12,8 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - name: checkout code
-        uses: actions/checkoutcode@v2
+      #- name: checkout code
+      #  uses: actions/checkoutcode@v2
 
       - name: setup Xcode
         run: xcodebuild -version
