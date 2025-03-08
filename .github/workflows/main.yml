@@ -20,6 +20,10 @@ jobs:
 
       - name: check archyteture
         run: uname -a
+
+      - name: display variables
+        run: echo "$RUNNER_OS"
+       
   ## build da aplicacao ##
   build:
     name: build-ios
