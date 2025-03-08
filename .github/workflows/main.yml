@@ -40,14 +40,14 @@ jobs:
     needs: [sonar]
     uses: ricardoysh/pipeline-core/.github/workflows/obfuscate-ios.yml@main
 
-  approve:
-    runs-on: ubuntu-latest
-    needs: [obfuscate]
-    steps:
-      - name: Wait for approval
-        uses: hmarr/approve-action@v2
+  # approve:
+  #   runs-on: ubuntu-latest
+  #   needs: [obfuscate]
+  #   steps:
+  #     - name: Wait for approval
+  #       uses: hmarr/approve-action@v2
 
   releae-app:
     name: release ios app
-    needs: [approve]
+    needs: [obfuscate]
     uses: ricardoysh/pipeline-core/.github/workflows/release-ios.yml@main
