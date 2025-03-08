@@ -20,4 +20,10 @@ jobs:
 
       - name: check archyteture
         run: uname -a
+
+      - name: install dependencies
+        run: |
+          brew install cocoapods
+          pod install
+          
         
