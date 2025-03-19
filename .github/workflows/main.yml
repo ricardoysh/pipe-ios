@@ -46,7 +46,7 @@ jobs:
   #   steps:
   #     - name: Wait for approval
   #       uses: hmarr/approve-action@v2
-
+  # teste
   releae-app:
     name: release ios app
     needs: [obfuscate]
