@@ -3,5 +3,5 @@ variables:
     value: teste/teste.com
 
   - name: MY_VAR_02
-    value: @_XXXX import xpto
+    value: '@_XXXX import xpto'
     
