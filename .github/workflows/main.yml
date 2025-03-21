@@ -1,4 +1,4 @@
-name: iOS CI Pipeline
+name: pipeline-ios-test
 
 on:
   workflow_dispatch:
