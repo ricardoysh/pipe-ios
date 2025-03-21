@@ -13,21 +13,16 @@ jobs:
   init:
     runs-on: macos-latest
     steps:
-      #- name: checkout code
-      #  uses: actions/checkoutcode@v2
+      - name: checkout code
+        uses: actions/checkoutcode@v2
 
       # - name: setup Xcode
       #   run: xcodebuild -version
 
-      - name: Set environment variable
-        id: set_var
+      - name: Load variables
         run: |
-          MY_VAR="Hello, World!"
-          echo "MY_VAR=$MY_VAR" >> $GITHUB_ENV
-          echo "::set-output name=my_var::$MY_VAR"
+          echo "teste"
 
-      - name: Output the variable
-        run: echo "The variable is $MY_VAR"
 
       # - name: display variables
       #   run: echo "$RUNNER_OS"
