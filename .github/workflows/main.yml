@@ -19,19 +19,15 @@ jobs:
       # - name: setup Xcode
       #   run: xcodebuild -version
 
-      - name: set variables
+      - name: Set environment variable
+        id: set_var
         run: |
-          echo "VAR1=valor1" >> $GITHUB_ENV
-          echo "VAR2=valor2" >> $GITHUB_ENV
+          MY_VAR="Hello, World!"
+          echo "MY_VAR=$MY_VAR" >> $GITHUB_ENV
+          echo "::set-output name=my_var::$MY_VAR"
 
-  job2:
-    runs-on: ubuntu-latest
-    needs: init
-    steps:
-      - name: Usar variáveis
-        run: |
-          echo "VAR1 é $VAR1"
-          echo "VAR2 é $VAR2"
+      - name: Output the variable
+        run: echo "The variable is $MY_VAR"
 
       # - name: display variables
       #   run: echo "$RUNNER_OS"
