@@ -19,27 +19,38 @@ jobs:
       # - name: setup Xcode
       #   run: xcodebuild -version
 
-      # - name: check archyteture
-      #   run: uname -a
+      - name: set variables
+        run: |
+          echo "VAR1=valor1" >> $GITHUB_ENV
+          echo "VAR2=valor2" >> $GITHUB_ENV
 
-      - name: display variables
-        run: echo "$RUNNER_OS"
+  job2:
+    runs-on: ubuntu-latest
+    needs: init
+    steps:
+      - name: Usar variáveis
+        run: |
+          echo "VAR1 é $VAR1"
+          echo "VAR2 é $VAR2"
+
+      # - name: display variables
+      #   run: echo "$RUNNER_OS"
        
   ## build da aplicacao ##
-  build:
-    name: build-ios
-    needs: [init]
-    uses: ricardoysh/pipeline-core/.github/workflows/build-ios.yml@main
-  ## escaneamento de cod com sonar ##        
-  sonar:
-    name: run sonar scan
-    needs: [build]
-    uses: ricardoysh/pipeline-core/.github/workflows/sonar-ios.yml@main
-  ## ofuscacao de codigo ##
-  obfuscate:
-    name: run obfuscate code
-    needs: [sonar]
-    uses: ricardoysh/pipeline-core/.github/workflows/obfuscate-ios.yml@main
+  # build:
+  #   name: build-ios
+  #   needs: [init]
+  #   uses: ricardoysh/pipeline-core/.github/workflows/build-ios.yml@main
+  # ## escaneamento de cod com sonar ##        
+  # sonar:
+  #   name: run sonar scan
+  #   needs: [build]
+  #   uses: ricardoysh/pipeline-core/.github/workflows/sonar-ios.yml@main
+  # ## ofuscacao de codigo ##
+  # obfuscate:
+  #   name: run obfuscate code
+  #   needs: [sonar]
+  #   uses: ricardoysh/pipeline-core/.github/workflows/obfuscate-ios.yml@main
 
   # approve:
   #   runs-on: ubuntu-latest
@@ -49,7 +60,7 @@ jobs:
   #       uses: hmarr/approve-action@v2
   # teste
   
-  releae-app:
-    name: release ios app
-    needs: [obfuscate]
-    uses: ricardoysh/pipeline-core/.github/workflows/release-ios.yml@main
+  # releae-app:
+  #   name: release ios app
+  #   needs: [obfuscate]
+  #   uses: ricardoysh/pipeline-core/.github/workflows/release-ios.yml@main
