@@ -23,6 +23,7 @@ jobs:
         run: |
           for vars in $(yq e '.variables[] | .name + "=" + .value' variables/variables.yml); do
             echo "$vars"
+          done
 
 
       # - name: display variables
