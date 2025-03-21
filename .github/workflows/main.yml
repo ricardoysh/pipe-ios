@@ -1,12 +1,13 @@
 name: iOS CI Pipeline
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      main
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
+  #   branches:
+  #     main
 
 jobs:
   init:
@@ -15,11 +16,11 @@ jobs:
       #- name: checkout code
       #  uses: actions/checkoutcode@v2
 
-      - name: setup Xcode
-        run: xcodebuild -version
+      # - name: setup Xcode
+      #   run: xcodebuild -version
 
-      - name: check archyteture
-        run: uname -a
+      # - name: check archyteture
+      #   run: uname -a
 
       - name: display variables
         run: echo "$RUNNER_OS"
