@@ -21,7 +21,8 @@ jobs:
 
       - name: Load variables
         run: |
-          echo "teste"
+          for vars in $(yq e '.variables[] | .name + "=" + .value' variables/variables.yml); do
+            echo $vars 
 
 
       # - name: display variables
