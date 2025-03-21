@@ -16,6 +16,9 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
 
+      - name: install yq
+        run: jq --version
+
       - name: Load variables
         run: |
           for vars in $(yq e '.variables[] | .name + "=" + .value' variables/variables.yml); do
