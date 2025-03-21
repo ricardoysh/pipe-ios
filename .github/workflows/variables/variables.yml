@@ -1,0 +1,7 @@
+variables:
+  - name: MY_VAR_01
+    value: teste/teste.com
+
+  - name: MY_VAR_02
+    value: @_XXXX import xpto
+    
