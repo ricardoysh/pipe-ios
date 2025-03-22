@@ -60,16 +60,16 @@ jobs:
           echo "VAR_SPACE_03 ---> $VAR_SPACE_03"
         
 
-      - name: check ambient $GITHUB_REF
+      - name: check ambient
         run: |
-          echo $GITHUB_REF
-          echo ${{github.ref}}
+          # echo $GITHUB_REF
+          # echo ${{github.ref}}
           if [[ $GITHUB_REF == "refs/heads/main" || "refs/heads/master" ]]; then
-            echo "::warning::Identificado: AMBIENTE DE PRODUCAO"
+            echo "Identificado -------> AMBIENTE DE PRODUCAO"
           elif [[ $GITHUB_REF == "refs/heads/release" ]]; then
-            echo "::warning::Identificado: AMBIENTE DE HOMOLOGACAO"
+            echo "Identificado -------> AMBIENTE DE HOMOLOGACAO"
           elif [[ $GITHUB_REF == "refs/heads/develop" ]]; then
-            echo "::warning::Identificado: AMBIENTE DE DESENVOLVIMENTO"
+            echo "Identificado -------> AMBIENTE DE DESENVOLVIMENTO"
           fi
       
   ## build da aplicacao ##
