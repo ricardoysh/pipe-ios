@@ -11,3 +11,5 @@ variables:
   # - name: MY_VAR_04
   #   value: '@_XXXX import xpto'
     
+  - name: MY_VAR_WEB1
+    value: www.google.com/xpto/abcd

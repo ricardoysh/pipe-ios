@@ -37,10 +37,11 @@ jobs:
       - name: Use environment variable
         run: |
           echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
-          echo "VAR1 ---> $MY_VAR_01"
-          echo "VAR2 ---> $MY_VAR_02"
-          echo "VAR3 ---> $MY_VAR_03"
-          echo "VAR4 ---> $MY_VAR_04"
+          echo "VAR1 -----> $MY_VAR_01"
+          echo "VAR2 -----> $MY_VAR_02"
+          echo "VAR3 -----> $MY_VAR_03"
+          echo "VAR4 -----> $MY_VAR_04"
+          echo "VAR_WEB --> $MY_VAR_WEB1"
         
 
       # - name: display variables
