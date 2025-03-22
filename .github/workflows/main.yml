@@ -34,7 +34,7 @@ jobs:
           echo "::warning::Missing semicolon"
           echo "::error::Missing semicolon"
           echo "::debug::Missing semicolon"
-          "::add-mask::{SAO PAULO - SP}"
+
 
 
       #     echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
