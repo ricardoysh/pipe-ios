@@ -24,6 +24,7 @@ jobs:
           echo "Verificando as ferramentas necessárias:"
           echo "---------------------------------"
           xcodebuild -version
+          xcodebuild -help
           echo "---------------------------------"
           pod --version
           echo "---------------------------------"
