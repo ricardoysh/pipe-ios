@@ -27,13 +27,13 @@ jobs:
             echo "$vars" >> $GITHUB_ENV
           done
 
-      - name: debug msgs
-        run: |
+      # - name: debug msgs
+      #   run: |
           
-          echo "::notice::Missing semicolon"
-          echo "::warning::Missing semicolon"
-          echo "::error::Missing semicolon"
-          echo "::debug::Missing semicolon"
+      #     echo "::notice::Missing semicolon"
+      #     echo "::warning::Missing semicolon"
+      #     echo "::error::Missing semicolon"
+      #     echo "::debug::Missing semicolon"
 
 
 
@@ -63,11 +63,11 @@ jobs:
           echo $GITHUB_REF
           echo ${{github.ref}}
           if [[ $GITHUB_REF == "refs/heads/main" || "refs/heads/master" ]]; then
-            echo "Identificado: AMBIENTE DE PRODUCAO"
+            echo "::warning::Identificado: AMBIENTE DE PRODUCAO"
           elif [[ $GITHUB_REF == "refs/heads/release" ]]; then
-            echo "Identificado: AMBIENTE DE HOMOLOGACAO"
+            echo "::warning::Identificado: AMBIENTE DE HOMOLOGACAO"
           elif [[ $GITHUB_REF == "refs/heads/develop" ]]; then
-            echo "Identificado: AMBIENTE DE DESENVOLVIMENTO"
+            echo "::warning::Identificado: AMBIENTE DE DESENVOLVIMENTO"
           fi
       
   ## build da aplicacao ##
