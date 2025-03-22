@@ -1,7 +1,13 @@
 variables:
   - name: MY_VAR_01
     value: teste/teste.com
-
+  
   - name: MY_VAR_02
+    value: teste02-02/teste-02-02.com
+
+  - name: MY_VAR_03
+    value: teste03-03/teste03-03.com
+
+  - name: MY_VAR_04
     value: '@_XXXX import xpto'
     
