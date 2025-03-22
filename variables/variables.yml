@@ -9,7 +9,7 @@ variables:
     value: teste03-03/teste03-03.com
 
   - name: MY_VAR_04
-    value: '@_XXXX import xpto'
+    value: @_XXXX import xpto
     
   - name: MY_VAR_WEB1
     value: www.terra.com.br/xxxx/lkasjdfasdfx
