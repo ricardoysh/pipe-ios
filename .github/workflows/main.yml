@@ -49,8 +49,10 @@ jobs:
           echo "VAR_SPACE_03 ---> $VAR_SPACE_03"
         
 
-      # - name: display variables
-      #   run: echo "$RUNNER_OS"
+      - name: check ambient
+        run: |
+          echo $GITHUB_REF
+          echo ${{github.ref}}
        
   ## build da aplicacao ##
   # build:
