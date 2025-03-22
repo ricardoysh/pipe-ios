@@ -19,6 +19,23 @@ jobs:
       # - name: install yq
       #   run: jq --version
 
+      - name: check dependencies
+        run: |
+          echo "Verificando as ferramentas necessárias:"
+          echo "---------------------------------"
+          xcodebuild -version
+          echo "---------------------------------"
+          pod version
+          echo "---------------------------------"
+          fastlane -v
+          echo "---------------------------------"
+          gem -v
+          echo "---------------------------------"
+          node -v
+          echo "---------------------------------"
+
+          echo "-------------- fim --------------"
+
       - name: Load variables
         run: |
           IFS=$'\n'
