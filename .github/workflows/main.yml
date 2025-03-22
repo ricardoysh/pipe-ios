@@ -103,7 +103,16 @@ jobs:
         if: github.ref == 'refs/heads/develop'
         run: |
           echo "build development"
+ 
+      - name: get secret
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET_NAME }}"
+          MY_PASS: ${{ secrets.SECRET_PASS }}"
+        run: |
+          echo "MY_SECRET:$MY_SECRET"
+          echo "MY_PASS:$MY_PASS"
 
+  
   ## build da aplicacao ##
   # build:
   #   name: build-ios
