@@ -73,17 +73,17 @@ jobs:
           fi
       
       - name: build-producao
+        if: github.ref == 'refs/heads/main'
         run: |
-          if: github.ref == "refs/heads/main"
           echo "build production"
       
       - name: build-homologacao
+        if: github.ref == 'refs/heads/release'
         run: |
-          if: github.ref == "refs/heads/release"
           echo "build homologation"
       - name: build-develop
+        if: github.ref == 'refs/heads/develop'
         run: |
-          if: github.ref == "refs/heads/develop"
           echo "build development"
 
   ## build da aplicacao ##
