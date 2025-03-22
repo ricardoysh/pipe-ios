@@ -53,7 +53,14 @@ jobs:
         run: |
           echo $GITHUB_REF
           echo ${{github.ref}}
-       
+          if [[ $GITHUB_REF == "refs/heads/main" || "refs/heads/master" ]]; then
+            echo "Identificado: AMBIENTE DE PRODUCAO"
+          elif [[ $GITHUB_REF == "refs/heads/release" ]]; then
+            echo "Identificado: AMBIENTE DE HOMOLOGACAO"
+          elif [[ $GITHUB_REF == "refs/heads/develop" ]]; then
+            echo "Identificado: AMBIENTE DE DESENVOLVIMENTO"
+          fi
+      
   ## build da aplicacao ##
   # build:
   #   name: build-ios
