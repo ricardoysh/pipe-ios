@@ -44,6 +44,9 @@ jobs:
           echo "VAR4 -----> $MY_VAR_04"
           echo "VAR_WEB --> $MY_VAR_WEB1"
           echo "MY_VAR_WEB5 ----> $MY_VAR_WEB5"
+          echo "VAR_SPACE_01 ---> $VAR_SPACE_01"
+          echo "VAR_SPACE_02 ---> $VAR_SPACE_02"
+          echo "VAR_SPACE_03 ---> $VAR_SPACE_03"
         
 
       # - name: display variables

@@ -25,3 +25,12 @@ variables:
 
   - name: MY_VAR_WEB5
     value: www.bola7.com/xdfffff
+  
+  - name: VAR_SPACE_01
+    value: "@_Ois xxxx zzzzz yyyyyy"
+  
+  - name: VAR_SPACE_02
+    value: "#fffff ccccc 4444444"
+  
+  - name : VAR_SPACE_03
+    value: "%2222 $99999 &000000"
