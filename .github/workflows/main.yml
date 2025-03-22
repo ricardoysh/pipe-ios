@@ -46,6 +46,7 @@ jobs:
   
       - name: Use environment variable
         run: |
+          echo "::warining::Recuperando variáveis do projeto..."
           # echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
           echo "VAR1 -----> $MY_VAR_01"
           echo "VAR2 -----> $MY_VAR_02"
