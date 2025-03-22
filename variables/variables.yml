@@ -12,4 +12,16 @@ variables:
   #   value: '@_XXXX import xpto'
     
   - name: MY_VAR_WEB1
-    value: www.google.com/xpto/abcd
+    value: www.terra.com.br/xxxx/lkasjdfasdfx
+
+  - name: MY_VAR_WEB2
+    value: www.uosl.com/xdfsdfpto/abcd
+
+  - name: MY_VAR_WEB3
+    value: www.tatata.com/kkkkkkkkkk
+
+  - name: MY_VAR_WEB4
+    value: www.batata.csddff/sdfsdf/sdfsdfee
+
+  - name: MY_VAR_WEB5
+    value: www.bola7.com/xdfffff

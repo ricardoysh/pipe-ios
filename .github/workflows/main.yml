@@ -23,6 +23,7 @@ jobs:
         run: |
           for vars in $(yq e '.variables[] | .name + "=" + (.value | @sh)' variables/variables.yml); do
             echo "$vars"
+            echo " echo "$vars" >> $GITHUB_ENV"
             echo "$vars" >> $GITHUB_ENV
           done
       - name: debug msg
@@ -42,6 +43,7 @@ jobs:
           echo "VAR3 -----> $MY_VAR_03"
           echo "VAR4 -----> $MY_VAR_04"
           echo "VAR_WEB --> $MY_VAR_WEB1"
+          echo "MY_VAR_WEB5 ----> $MY_VAR_WEB5"
         
 
       # - name: display variables
