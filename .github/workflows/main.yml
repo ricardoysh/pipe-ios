@@ -24,7 +24,6 @@ jobs:
           IFS=$'\n'
           for vars in $(yq e '.variables[] | .name + "=" + (.value | @sh)' variables/variables.yml); do
             echo "$vars"
-            echo " echo "$vars" >> $GITHUB_ENV"
             echo "$vars" >> $GITHUB_ENV
           done
       - name: debug msg
