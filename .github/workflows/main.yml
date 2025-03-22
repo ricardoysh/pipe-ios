@@ -26,18 +26,18 @@ jobs:
             echo "$vars"
             echo "$vars" >> $GITHUB_ENV
           done
-      - name: debug msg
-        run: |
-          echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
-          echo "::warning file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
-          echo "::error file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
+      # - name: debug msg
+      #   run: |
+      #     echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
+      #     echo "::warning file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
+      #     echo "::error file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
 
-      - name: Set environment variable
-        run: echo "MY_ENV_VAR=myValue" >> $GITHUB_ENV
+      # - name: Set environment variable
+      #   run: echo "MY_ENV_VAR=myValue" >> $GITHUB_ENV
   
       - name: Use environment variable
         run: |
-          echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
+          # echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
           echo "VAR1 -----> $MY_VAR_01"
           echo "VAR2 -----> $MY_VAR_02"
           echo "VAR3 -----> $MY_VAR_03"
