@@ -26,7 +26,8 @@ jobs:
           done
       - name: debug msg
         run: |
-          echo "::debug::Set the Octocat variable"
+          echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
+
         
 
       # - name: display variables
