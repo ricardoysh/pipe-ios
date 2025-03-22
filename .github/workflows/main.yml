@@ -26,10 +26,14 @@ jobs:
             echo "$vars"
             echo "$vars" >> $GITHUB_ENV
           done
-          
-      - name: debug msg
+
+      - name: debug msgs
         run: |
-          echo "::workflow-command parameter1={data},parameter2={data}::{command value}"
+          
+          echo "::notice::Missing semicolon"
+          echo "::warning::Missing semicolon"
+          echo "::error::Missing semicolon"
+
 
       #     echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
       #     echo "::warning file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
