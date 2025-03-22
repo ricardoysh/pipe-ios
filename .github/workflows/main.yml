@@ -72,6 +72,20 @@ jobs:
             echo "Identificado -------> AMBIENTE DE DESENVOLVIMENTO"
           fi
       
+      - name: build-producao
+        run: |
+          if: github.ref == "refs/heads/main"
+          echo "build production"
+      
+      - name: build-homologacao
+        run: |
+          if: github.ref == "refs/heads/release"
+          echo "build homologation"
+      - name: build-develop
+        run: |
+          if: github.ref == "refs/heads/develop"
+          echo "build development"
+
   ## build da aplicacao ##
   # build:
   #   name: build-ios
