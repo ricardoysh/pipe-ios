@@ -24,7 +24,7 @@ jobs:
           echo "Verificando as ferramentas necessárias:"
           echo "---------------------------------"
           xcodebuild -version
-          xcodebuild -help
+          # xcodebuild -help
           echo "---------------------------------"
           pod --version
           echo "---------------------------------"
@@ -35,7 +35,7 @@ jobs:
           node -v
           echo "---------------------------------"
 
-          echo "-------------- fim --------------"
+          echo "-------------- **fim** --------------"
 
       - name: Load variables
         run: |
