@@ -24,7 +24,10 @@ jobs:
           for vars in $(yq e '.variables[] | .name + "=" + (.value | @sh)' variables/variables.yml); do
             echo "$vars"
           done
-
+      - name: debug msg
+        run: |
+          echo "::debug::Set the Octocat variable"
+        
 
       # - name: display variables
       #   run: echo "$RUNNER_OS"
