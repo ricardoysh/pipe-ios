@@ -17,6 +17,8 @@ jobs:
   init:
     runs-on: macos-latest
     steps:
+      - name: checkout code
+        uses: actions/checkout@v2
 
       - id: step1
         name: set vars
