@@ -12,16 +12,16 @@ jobs:
       - name: Ler variáveis do arquivo
         id: vars
         run: |
-          echo "VAR_1=$(grep 'VAR_1:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
-          echo "VAR_2=$(grep 'VAR_2:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
-          echo "VAR_3=$(grep 'VAR_3:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
-          echo "VAR_4=$(grep 'VAR_4:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
-          echo "VAR_5=$(grep 'VAR_5:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
-          echo "VAR_6=$(grep 'VAR_6:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
-          echo "VAR_7=$(grep 'VAR_7:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
-          echo "VAR_8=$(grep 'VAR_8:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
-          echo "VAR_9=$(grep 'VAR_9:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
-          echo "VAR_10=$(grep 'VAR_10:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_1=$(grep 'VAR_1:' variables/variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_2=$(grep 'VAR_2:' variables/variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_3=$(grep 'VAR_3:' variables/variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_4=$(grep 'VAR_4:' variables/variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_5=$(grep 'VAR_5:' variables/variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_6=$(grep 'VAR_6:' variables/variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_7=$(grep 'VAR_7:' variables/variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_8=$(grep 'VAR_8:' variables/variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_9=$(grep 'VAR_9:' variables/variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_10=$(grep 'VAR_10:' variables/variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
 
   build:
     runs-on: ubuntu-latest
