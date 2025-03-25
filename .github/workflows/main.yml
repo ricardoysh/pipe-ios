@@ -1,41 +1,80 @@
 name: pipeline-ios-test
 
 on:
-  # workflow_dispatch:
   push:
     branches:
       - main
-    # pull_request:
-  #   branches:
-  #     main
-# env:
-#   # Carrega todas as variáveis do grupo 'dev' por padrão
-#   ${{ fromJSON(include('variables2.yml'))['variables'] }}
-#   ${{ fromJson()}}
 
 jobs:
-  init:
-    runs-on: macos-latest
+  prepare:
+    runs-on: ubuntu-latest
     steps:
-      - name: checkout code
-        uses: actions/checkout@v2
-
-      - id: step1
-        name: set vars
+      - name: Ler variáveis do arquivo
+        id: vars
         run: |
-          IFS=$'\n'
-          for vars in $(yq e '.variables[] | .name + "=" + .value' variables/variables.yml); do
-            echo "$vars"
-            echo "$vars" >> $GITHUB_OUTPUT
-          done
+          echo "VAR_1=$(grep 'VAR_1:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_2=$(grep 'VAR_2:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_3=$(grep 'VAR_3:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_4=$(grep 'VAR_4:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_5=$(grep 'VAR_5:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_6=$(grep 'VAR_6:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_7=$(grep 'VAR_7:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_8=$(grep 'VAR_8:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_9=$(grep 'VAR_9:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
+          echo "VAR_10=$(grep 'VAR_10:' variables.yml | cut -d' ' -f2 | tr -d '\"')" >> $GITHUB_ENV
 
-        # run: echo "test=Hello world" >> $GITHUB_OUTPUT
+  build:
+    runs-on: ubuntu-latest
+    needs: prepare
+    steps:
+      - name: Exibir variáveis
+        run: |
+          echo "VAR_1: $VAR_1"
+          echo "VAR_2: $VAR_2"
+          echo "VAR_3: $VAR_3"
+          echo "VAR_4: $VAR_4"
+          echo "VAR_5: $VAR_5"
+          echo "VAR_6: $VAR_6"
+          echo "VAR_7: $VAR_7"
+          echo "VAR_8: $VAR_8"
+          echo "VAR_9: $VAR_9"
+          echo "VAR_10: $VAR_10"
+# on:
+#   # workflow_dispatch:
+#   push:
+#     branches:
+#       - main
+#     # pull_request:
+#   #   branches:
+#   #     main
+# # env:
+# #   # Carrega todas as variáveis do grupo 'dev' por padrão
+# #   ${{ fromJSON(include('variables2.yml'))['variables'] }}
+# #   ${{ fromJson()}}
 
-      - run: |
-          echo "VAR_01 --> ${{ steps.step1.outputs.MY_VAR_01 }}"
-          echo "VAR_02 --> ${{ steps.step1.outputs.MY_VAR_02 }}"
-          echo "VAR_03 --> ${{ steps.step1.outputs.MY_VAR_03 }}"
-          echo "VAR_04 --> ${{ steps.step1.outputs.MY_VAR_04 }}"
+# jobs:
+#   init:
+#     runs-on: macos-latest
+#     steps:
+#       - name: checkout code
+#         uses: actions/checkout@v2
+
+#       - id: step1
+#         name: set vars
+#         run: |
+#           IFS=$'\n'
+#           for vars in $(yq e '.variables[] | .name + "=" + .value' variables/variables.yml); do
+#             echo "$vars"
+#             echo "$vars" >> $GITHUB_OUTPUT
+#           done
+
+#         # run: echo "test=Hello world" >> $GITHUB_OUTPUT
+
+#       - run: |
+#           echo "VAR_01 --> ${{ steps.step1.outputs.MY_VAR_01 }}"
+#           echo "VAR_02 --> ${{ steps.step1.outputs.MY_VAR_02 }}"
+#           echo "VAR_03 --> ${{ steps.step1.outputs.MY_VAR_03 }}"
+#           echo "VAR_04 --> ${{ steps.step1.outputs.MY_VAR_04 }}"
 
 
   # build:
