@@ -28,11 +28,11 @@ jobs:
 
         # run: echo "test=Hello world" >> $GITHUB_OUTPUT
 
-      - run: |
-          echo "VAR_01 --> ${{ step.step1.outputs.MY_VAR_01}}"
-          echo "VAR_02 --> ${{ step.step1.outputs.MY_VAR_02}}"
-          echo "VAR_03 --> ${{ step.step1.outputs.MY_VAR_03}}"
-          echo "VAR_04 --> ${{ step.step1.outputs.MY_VAR_04}}"
+      # - run: |
+      #     echo "VAR_01 --> ${{ step.step1.outputs.MY_VAR_01}}"
+      #     echo "VAR_02 --> ${{ step.step1.outputs.MY_VAR_02}}"
+      #     echo "VAR_03 --> ${{ step.step1.outputs.MY_VAR_03}}"
+      #     echo "VAR_04 --> ${{ step.step1.outputs.MY_VAR_04}}"
 
 
 
