@@ -1,0 +1,9 @@
+variables:
+  MY_VAR_01: "este/teste.com"
+  
+  MY_VAR_02: "este02-02/teste-02-02.com"
+
+  MY_VAR_03: "este03-03/teste03-03.com"
+
+  MY_VAR_04: "@_XXXX import xpto"
+  
