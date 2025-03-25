@@ -13,104 +13,114 @@ jobs:
   init:
     runs-on: macos-latest
     steps:
-      - name: checkout code
-        uses: actions/checkout@v2
+    - uses: ricardoysh/pipe-ios
+      with:
+        org: ricardoysh
+        repo: pipe-ios/variables/variables.yml
+        groups: |
+          ricardoysh/pipe-ios/variables/variables.yml
+    - name: print variables
+      run: |
+        env | sort
 
-      # - name: install yq
-      #   run: jq --version
+      # - name: checkout code
+      #   uses: actions/checkout@v2
 
-      - name: check dependencies
-        run: |
-          echo "Verificando as ferramentas necessárias:"
-          echo "---------------------------------"
-          xcodebuild -version
-          # xcodebuild -help
-          echo "---------------------------------"
-          pod --version
-          echo "---------------------------------"
-          fastlane -v
-          echo "---------------------------------"
-          gem -v
-          echo "---------------------------------"
-          node -v
-          echo "---------------------------------"
+      # # - name: install yq
+      # #   run: jq --version
 
-          echo "-------------- **fim** --------------"
-
-      - name: Load variables
-        run: |
-          IFS=$'\n'
-          for vars in $(yq e '.variables[] | .name + "=" + .value' variables/variables.yml); do
-            echo "$vars"
-            echo "$vars" >> $GITHUB_ENV
-          done
-
-      # - name: debug msgs
+      # - name: check dependencies
       #   run: |
+      #     echo "Verificando as ferramentas necessárias:"
+      #     echo "---------------------------------"
+      #     xcodebuild -version
+      #     # xcodebuild -help
+      #     echo "---------------------------------"
+      #     pod --version
+      #     echo "---------------------------------"
+      #     fastlane -v
+      #     echo "---------------------------------"
+      #     gem -v
+      #     echo "---------------------------------"
+      #     node -v
+      #     echo "---------------------------------"
+
+      #     echo "-------------- **fim** --------------"
+
+      # - name: Load variables
+      #   run: |
+      #     IFS=$'\n'
+      #     for vars in $(yq e '.variables[] | .name + "=" + .value' variables/variables.yml); do
+      #       echo "$vars"
+      #       echo "$vars" >> $GITHUB_ENV
+      #     done
+
+      # # - name: debug msgs
+      # #   run: |
           
-      #     echo "::notice::Missing semicolon"
-      #     echo "::warning::Missing semicolon"
-      #     echo "::error::Missing semicolon"
-      #     echo "::debug::Missing semicolon"
+      # #     echo "::notice::Missing semicolon"
+      # #     echo "::warning::Missing semicolon"
+      # #     echo "::error::Missing semicolon"
+      # #     echo "::debug::Missing semicolon"
 
 
 
-      #     echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
-      #     echo "::warning file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
-      #     echo "::error file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
+      # #     echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
+      # #     echo "::warning file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
+      # #     echo "::error file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
 
-      # - name: Set environment variable
-      #   run: echo "MY_ENV_VAR=myValue" >> $GITHUB_ENV
+      # # - name: Set environment variable
+      # #   run: echo "MY_ENV_VAR=myValue" >> $GITHUB_ENV
   
-      - name: Use environment variable
-        run: |
-          echo "Recuperando variáveis do projeto..."
-          echo "-----------------------------------------"
-          # echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
-          echo "VAR1 -----> $MY_VAR_01"
-          echo "VAR2 -----> $MY_VAR_02"
-          echo "VAR3 -----> $MY_VAR_03"
-          echo "VAR4 -----> $MY_VAR_04"
-          echo "VAR_WEB --> $MY_VAR_WEB1"
-          echo "MY_VAR_WEB5 ----> $MY_VAR_WEB5"
-          echo "VAR_SPACE_01 ---> $VAR_SPACE_01"
-          echo "VAR_SPACE_02 ---> $VAR_SPACE_02"
-          echo "VAR_SPACE_03 ---> $VAR_SPACE_03"
+      # - name: Use environment variable
+      #   run: |
+      #     echo "Recuperando variáveis do projeto..."
+      #     echo "-----------------------------------------"
+      #     # echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
+      #     echo "VAR1 -----> $MY_VAR_01"
+      #     echo "VAR2 -----> $MY_VAR_02"
+      #     echo "VAR3 -----> $MY_VAR_03"
+      #     echo "VAR4 -----> $MY_VAR_04"
+      #     echo "VAR_WEB --> $MY_VAR_WEB1"
+      #     echo "MY_VAR_WEB5 ----> $MY_VAR_WEB5"
+      #     echo "VAR_SPACE_01 ---> $VAR_SPACE_01"
+      #     echo "VAR_SPACE_02 ---> $VAR_SPACE_02"
+      #     echo "VAR_SPACE_03 ---> $VAR_SPACE_03"
         
 
-      - name: check ambient
-        run: |
-          # echo $GITHUB_REF
-          # echo ${{github.ref}}
-          if [[ $GITHUB_REF == "refs/heads/main" || "refs/heads/master" ]]; then
-            echo "Identificado -------> AMBIENTE DE PRODUCAO"
-          elif [[ $GITHUB_REF == "refs/heads/release" ]]; then
-            echo "Identificado -------> AMBIENTE DE HOMOLOGACAO"
-          elif [[ $GITHUB_REF == "refs/heads/develop" ]]; then
-            echo "Identificado -------> AMBIENTE DE DESENVOLVIMENTO"
-          fi
+      # - name: check ambient
+      #   run: |
+      #     # echo $GITHUB_REF
+      #     # echo ${{github.ref}}
+      #     if [[ $GITHUB_REF == "refs/heads/main" || "refs/heads/master" ]]; then
+      #       echo "Identificado -------> AMBIENTE DE PRODUCAO"
+      #     elif [[ $GITHUB_REF == "refs/heads/release" ]]; then
+      #       echo "Identificado -------> AMBIENTE DE HOMOLOGACAO"
+      #     elif [[ $GITHUB_REF == "refs/heads/develop" ]]; then
+      #       echo "Identificado -------> AMBIENTE DE DESENVOLVIMENTO"
+      #     fi
       
-      - name: build-producao
-        if: github.ref == 'refs/heads/main'
-        run: |
-          echo "build production"
+      # - name: build-producao
+      #   if: github.ref == 'refs/heads/main'
+      #   run: |
+      #     echo "build production"
       
-      - name: build-homologacao
-        if: github.ref == 'refs/heads/release'
-        run: |
-          echo "build homologation"
-      - name: build-develop
-        if: github.ref == 'refs/heads/develop'
-        run: |
-          echo "build development"
+      # - name: build-homologacao
+      #   if: github.ref == 'refs/heads/release'
+      #   run: |
+      #     echo "build homologation"
+      # - name: build-develop
+      #   if: github.ref == 'refs/heads/develop'
+      #   run: |
+      #     echo "build development"
  
-      - name: get secret
-        env:
-          MY_SECRET: ${{ secrets.MY_SECRET_NAME }}"
-          MY_PASS: ${{ secrets.SECRET_PASS }}"
-        run: |
-          echo "MY_SECRET:$MY_SECRET"
-          echo "MY_PASS:$MY_PASS"
+      # - name: get secret
+      #   env:
+      #     MY_SECRET: ${{ secrets.MY_SECRET_NAME }}"
+      #     MY_PASS: ${{ secrets.SECRET_PASS }}"
+      #   run: |
+      #     echo "MY_SECRET:$MY_SECRET"
+      #     echo "MY_PASS:$MY_PASS"
 
   
   ## build da aplicacao ##
