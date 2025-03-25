@@ -36,22 +36,16 @@ jobs:
           echo "VAR_02 --> ${{ steps.step1.outputs.MY_VAR_02 }}"
           echo "VAR_03 --> ${{ steps.step1.outputs.MY_VAR_03 }}"
           echo "VAR_04 --> ${{ steps.step1.outputs.MY_VAR_04 }}"
-        env:
-          VAR_01: ${{ steps.step1.outputs.MY_VAR_01 }}
-          VAR_02: ${{ steps.step1.outputs.MY_VAR_02 }}
-          VAR_03: ${{ steps.step1.outputs.MY_VAR_03 }}
-          VAR_04: ${{ steps.step1.outputs.MY_VAR_04 }}
 
-  build:
-    env:
-      VAR_01: $VAR_01
-      
-    runs-on: macos-latest
-    needs: init
-    steps:
-      - name: build
-        run: |
-          echo "$VAR_01"
+
+  # build:
+  #   runs-on: macos-latest
+  #   needs: init
+  #   steps:
+  #     - name: build
+  #       run: |
+  #         echo "${{ env.VAR_01 }}"
+  #         echo "VAR_01 --> ${{ steps.step1.outputs.MY_VAR_01 }}"
 
 
 
