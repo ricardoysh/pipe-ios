@@ -19,6 +19,7 @@ jobs:
     steps:
 
       - id: step1
+        name: set vars
         run: |
           IFS=$'\n'
           for vars in $(yq e '.variables[] | .name + "=" + .value' variables/variables.yml); do
