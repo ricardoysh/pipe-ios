@@ -32,24 +32,27 @@ jobs:
         # run: echo "test=Hello world" >> $GITHUB_OUTPUT
 
       - run: |
-          echo "VAR_01 --> ${{ steps.step1.outputs.MY_VAR_01}}"
-          echo "VAR_02 --> ${{ steps.step1.outputs.MY_VAR_02}}"
-          echo "VAR_03 --> ${{ steps.step1.outputs.MY_VAR_03}}"
-          echo "VAR_04 --> ${{ steps.step1.outputs.MY_VAR_04}}"
+          echo "VAR_01 --> ${{ steps.step1.outputs.MY_VAR_01 }}"
+          echo "VAR_02 --> ${{ steps.step1.outputs.MY_VAR_02 }}"
+          echo "VAR_03 --> ${{ steps.step1.outputs.MY_VAR_03 }}"
+          echo "VAR_04 --> ${{ steps.step1.outputs.MY_VAR_04 }}"
+          env:
+            VAR_01: ${{ steps.step1.outputs.MY_VAR_01 }}
+            VAR_02: ${{ steps.step1.outputs.MY_VAR_02 }}
+            VAR_03: ${{ steps.step1.outputs.MY_VAR_03 }}
+            VAR_04: ${{ steps.step1.outputs.MY_VAR_04 }}
 
   build:
     runs-on: macos-latest
     steps:
       - name: build
-      run: |
-        echo "$VAR_01"
-
-      env:
-        VAR_01: ${{ steps.step1.outputs.MY_VAR_01}}"
+        run: |
+          echo "$VAR_01"
 
 
 
-        
+
+
       # echo "${{ steps.step1.outputs.test }}"
 
     # - name: Show variables
