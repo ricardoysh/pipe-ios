@@ -5,8 +5,8 @@ on:
     branches:
       - main
 
-env:
-  VAR1: xxxxxx
+# env:
+#   VAR1: xxxxxx
 
 jobs:
   job1:
@@ -15,6 +15,13 @@ jobs:
       - name: load variables
         run: |
           echo "$VAR1"
+      
+      - name: Create a env file
+        run: |
+          touch .env
+          echo VARIABLES_ENV="variables/variables2.yml" >> .env
+          #echo API_KEY=${{ secrets.API_KEY }} >> .env
+          cat .env
 
 # jobs:
 #   job1:
