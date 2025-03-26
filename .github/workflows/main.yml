@@ -10,10 +10,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Save .env as artifact
-        uses: actions/download-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: env-file
-          path: variables/.env  # Caminho para o seu arquivo .env
+          path: variables/*.env  # Caminho para o seu arquivo .env
 
   build:
     needs: prepare  # Depende do job 'prepare'
