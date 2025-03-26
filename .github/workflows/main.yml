@@ -1,27 +1,67 @@
 name: pipeline-ios-test
 
-on:
-  push:
-    branches:
-      - main
-
-# env:
-#   VAR1: xxxxxx
+on: [push]
 
 jobs:
-  job1:
+  prepare:
     runs-on: macos-latest
     steps:
-      - name: load variables
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Save .env as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: env-file
+          path: .env  # Caminho para o seu arquivo .env
+
+  build:
+    needs: prepare  # Depende do job 'prepare'
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download .env artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: env-file
+          path: .  # Baixa para o diretório raiz
+
+      - name: Use .env in build (exemplo)
         run: |
-          echo "$VAR1"
-      
-      - name: Create a env file
-        run: |
-          touch .env
-          echo VARIABLES_ENV="variables/variables2.yml" >> .env
-          #echo API_KEY=${{ secrets.API_KEY }} >> .env
+          echo "Conteúdo do .env:"
           cat .env
+          # Seu comando de build aqui, que pode usar as variáveis do .env
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# # env:
+# #   VAR1: xxxxxx
+
+# jobs:
+#   job1:
+#     runs-on: macos-latest
+#     steps:
+#       - name: load variables
+#         run: |
+#           echo "$VAR1"
+      
+#       # - name: Create a env file
+#       #   run: |
+#       #     touch .env
+#       #     echo VARIABLES_ENV="variables/variables2.yml" >> .env
+
+#       #     cat .env
+#       - id: dotenv
+#         uses: ./.github/actions/dotenv
+
+#       - name: display variables
+#         run: |
+#           echo ${{ steps.dotenv.MY_VAR_01 }}
 
 # jobs:
 #   job1:
