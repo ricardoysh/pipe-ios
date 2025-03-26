@@ -1,0 +1,26 @@
+name: _config
+
+env:
+  dev-cluster:            cloudkube-dev-m59i-cluster
+  dev-resource-group:     cloudkube-dev-m59i-rg
+  dev-hostname:           architecture-review.dev.cloudkube.io
+
+on:
+  workflow_call:
+
+jobs:
+    setup-variables:
+        runs-on: macos-latest
+        outputs:
+          git-env:  ${{ steps.resolved.outputs.github-env }}
+
+    # steps:
+    # - uses: actions/checkout@v3
+
+    # - id: is-dev
+    #   if: github.ref == 'refs/heads/main' # <== CONFIGURE (1)
+    #   name: 'DEV: set vars'
+    #   run: |
+    #     echo "github-env=dev" >> $GITHUB_ENV
+    #     echo "overlays=dev" >> $GITHUB_ENV
+
