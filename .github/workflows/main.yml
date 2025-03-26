@@ -13,7 +13,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: env-file
-          path: .env  # Caminho para o seu arquivo .env
+          path: variables/.env  # Caminho para o seu arquivo .env
 
   build:
     needs: prepare  # Depende do job 'prepare'
