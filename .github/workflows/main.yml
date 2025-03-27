@@ -1,24 +1,24 @@
 name: pipeline-ios-test
 
 on:
-  workflow_dispatch:
+  push
 
 jobs:
   set-variables:
     uses: ./.github/workflows/set-variabes.yml
 
-  prepare:
-    needs: set-variables
-    runs-on: macos-latest
+  # prepare:
+  #   needs: set-variables
+  #   runs-on: macos-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v2
 
-      - name: display vars
-        run: |
-          echo "## Display Pipeline Variables ##"
-          echo "${{ needs.set-variables.outputs.NEW_VAR1 }}"
+  #     - name: display vars
+  #       run: |
+  #         echo "## Display Pipeline Variables ##"
+  #         echo "${{ needs.set-variables.outputs.NEW_VAR1 }}"
           
       # - name: Save .env as artifact
       #   uses: actions/upload-artifact@v4
@@ -26,12 +26,12 @@ jobs:
       #     name: env-file
       #     path: .env
 
-  build:
-    needs: prepare  # Depende do job 'prepare'
-    runs-on: macos-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+  # build:
+  #   needs: prepare  # Depende do job 'prepare'
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v2
 
 # on:
 #   push:
