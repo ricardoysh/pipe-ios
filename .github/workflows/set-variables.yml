@@ -10,7 +10,7 @@ env:
 on:
   workflow_call:
     outputs:
-      NEW_VAR1:
+      VAR1:
         value: ${{ jobs.setup-variables.outputs.NEW_VAR1 }}
 
 jobs:
@@ -18,19 +18,19 @@ jobs:
       runs-on: macos-latest
       outputs:
        NEW_VAR1: ${{ steps.resolved.outputs.VAR1 }}
-       
+
       steps:
         - uses: actions/checkout@v3
 
-        - id: is-dev
-          name: 'DEV: set vars'
-          run: |
-           echo "NEW_VAR1=${{ env.VAR1 }}" >> $GITHUB_ENV
+        # - id: is-dev
+        #   name: 'DEV: set vars'
+        #   run: |
+        #    echo "NEW_VAR1=${{ env.VAR1 }}" >> $GITHUB_ENV
 
 
         - id: resolved
           name: set outputs
           run: |
-             echo "NEW_VAR1=${{ env.NEW_VAR1 }}" >> $GITHUB_OUTPUT
+             echo "VAR1=${{ env.VAR1 }}" >> $GITHUB_OUTPUT
 
 
