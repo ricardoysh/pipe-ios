@@ -3,6 +3,9 @@ name: pipeline-ios-test
 on: [push]
 
 jobs:
+  init:
+    uses: ./.github/workflows/config.yml
+    
   prepare:
     runs-on: macos-latest
     steps:
