@@ -33,11 +33,11 @@ jobs:
   #   steps:
   #     - name: Checkout repository
   #       uses: actions/checkout@v2
-  deploy:
-    needs: set-variables
-    uses: ./.github/workflow/deploy.yml
-    with:
-      VAR1: ${{ needs.set-variables.outputs.VAR1 }}
+  # deploy:
+  #   needs: set-variables
+  #   uses: ./.github/workflow/deploy.yml
+  #   with:
+  #     VAR1: ${{ needs.set-variables.outputs.VAR1 }}
 # on:
 #   push:
 #     branches:
