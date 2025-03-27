@@ -11,6 +11,8 @@ jobs:
   set-vars:
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v3
+      
       - id: display
         name: display-vars
         run: |
