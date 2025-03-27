@@ -5,8 +5,9 @@ on: [push]
 jobs:
   init:
     uses: ./.github/workflows/config.yml
-    
+
   prepare:
+    needs: init
     runs-on: macos-latest
     steps:
       - name: Checkout repository
