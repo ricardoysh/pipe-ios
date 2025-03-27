@@ -1,6 +1,7 @@
 name: pipeline-ios-test
 
-on: [push]
+on:
+  workflow_dispatch:
 
 jobs:
   set-variables:
@@ -9,6 +10,7 @@ jobs:
   prepare:
     needs: set-variables
     runs-on: macos-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
