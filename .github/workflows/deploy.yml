@@ -11,9 +11,9 @@ jobs:
   set-vars:
     runs-on: macos-latest
     steps:
-      - name: display-vars
+      - id: display
+        name: display-vars
         run: |
-          echo "${{ input.VAR1 }}"
+          echo "${{ VAR1 }}"
         with:
           VAR1: ${{ input.VAR1 }}
-          
