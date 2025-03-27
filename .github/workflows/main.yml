@@ -3,25 +3,21 @@ name: pipeline-ios-test
 on: [push]
 
 jobs:
-  init:
-    uses: ./.github/workflows/config.yml
+  set-variables:
+    uses: ./.github/workflows/set-variabes.yml
 
   prepare:
-    needs: init
+    needs: set-variables
     runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Download .env file
+      - name: display vars
         run: |
-          if [ -f .env ]; then
-            cp .env .env
-            echo ".env file downloaded successfully"
-          else
-            echo ".env file not found"
-            exit 1
-          fi
+          echo "## Display Pipeline Variables ##"
+          echo "${{ needs.set-variables.outputs.NEW_VAR1 }}"
+          
       # - name: Save .env as artifact
       #   uses: actions/upload-artifact@v4
       #   with:
@@ -34,18 +30,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Download .env artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: env-file
-          path: .  # Baixa para o diretório raiz
-
-      - name: Use .env in build (exemplo)
-        run: |
-          echo "Conteúdo do .env:"
-          cat .env
-          # Seu comando de build aqui, que pode usar as variáveis do .env
 
 # on:
 #   push:
