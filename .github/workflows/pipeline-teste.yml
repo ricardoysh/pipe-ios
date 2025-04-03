@@ -1,0 +1,13 @@
+name: pipeline-teste
+
+on:
+  push
+
+jobs:
+  init:
+    runs-on: macos-latest
+    steps:
+      - name: init
+        run: |
+          echo "teste"
+
