@@ -10,4 +10,21 @@ jobs:
       - name: init
         run: |
           echo "teste"
+      
+      - name: Checkout Current Repo
+        uses: actions/checkout@v4
+        with:
+          path: 'main-repo'
+
+      
+      - name: Checkout Outro Repo
+        uses: actions/checkout@v2
+        with:
+          repository: 'ricardoysh/pipe-test-rysh'
+          ref: 'develop'
+          path: 'secondary-repo'
+
+      - name: list files
+        run: |
+          ls -lha secodary-repo
 
