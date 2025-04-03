@@ -26,5 +26,7 @@ jobs:
 
       - name: list files
         run: |
-          ls -lha secodary-repo
+          ls -lha
+          echo "----------------------------------------"
+          pwd
 
