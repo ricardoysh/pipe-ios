@@ -1,0 +1,31 @@
+name: Set vars
+
+env:
+    SCHEME: 'Lolapalooza'
+    ORG:    'Rico_CORPORATION'
+
+on:
+  workflow_call:
+    outputs:
+      SCHEME:
+        value: ${{ jobs.set-variables.outputs.SCHEME }}
+      ORG:
+        value: ${{ jobs.set-variables.outputs.ORG }}
+
+jobs:
+  set-variables:
+    runs-on: macos-latest
+
+    outputs:
+      SCHEME: ${{ steps.export.outputs.SCHEME }}
+      ORG: ${{ steps.export.outputs.ORG }}
+
+    steps:
+      - name: set-vars
+        id: export
+        run: |
+          echo "SCHEME=${{ env.SCHEME }}" >> $GITHUB_OUTPUT
+          echo "ORG=${{ env.ORG }}"  >> $GITHUB_OUTPUT
+
+
+

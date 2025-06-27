@@ -4,277 +4,49 @@ on:
   workflow_dispatch:
 
 jobs:
-  set-variables:
-    uses: ./.github/workflows/set-variables.yml
-
-
-  prepare:
-    needs: set-variables
-    runs-on: macos-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: display vars
-        run: |
-          echo "## Display Pipeline Variables ##"
-          echo "${{ needs.set-variables.outputs.VAR1 }}"
-          
-      # - name: Save .env as artifact
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: env-file
-      #     path: .env
-
-  # build:
-  #   needs: prepare  # Depende do job 'prepare'
-  #   runs-on: macos-latest
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v2
-  # deploy:
-  #   needs: set-variables
-  #   uses: ./.github/workflow/deploy.yml
-  #   with:
-  #     VAR1: ${{ needs.set-variables.outputs.VAR1 }}
-# on:
-#   push:
-#     branches:
-#       - main
-
-# # env:
-# #   VAR1: xxxxxx
-
-# jobs:
-#   job1:
-#     runs-on: macos-latest
-#     steps:
-#       - name: load variables
-#         run: |
-#           echo "$VAR1"
-      
-#       # - name: Create a env file
-#       #   run: |
-#       #     touch .env
-#       #     echo VARIABLES_ENV="variables/variables2.yml" >> .env
-
-#       #     cat .env
-#       - id: dotenv
-#         uses: ./.github/actions/dotenv
-
-#       - name: display variables
-#         run: |
-#           echo ${{ steps.dotenv.MY_VAR_01 }}
-
-# jobs:
-#   job1:
-#     runs-on: ubuntu-latest
-#     # Map a step output to a job output
-#     outputs:
-#       output1: ${{ steps.step1.outputs.test }}
-#       output2: ${{ steps.step2.outputs.test }}
-#     steps:
-#       - id: step1
-#         run: echo "test=hello" >> "$GITHUB_OUTPUT"
-#       - id: step2
-#         run: echo "test=world" >> "$GITHUB_OUTPUT"
-#   job2:
-#     runs-on: ubuntu-latest
-#     needs: job1
-#     steps:
-#       - env:
-#           OUTPUT1: ${{needs.job1.outputs.output1}}
-#           OUTPUT2: ${{needs.job1.outputs.output2}}
-#         run: echo "$OUTPUT1 $OUTPUT2"
-# on:
-#   # workflow_dispatch:
-#   push:
-#     branches:
-#       - main
-#     # pull_request:
-#   #   branches:
-#   #     main
-# # env:
-# #   # Carrega todas as variáveis do grupo 'dev' por padrão
-# #   ${{ fromJSON(include('variables2.yml'))['variables'] }}
-# #   ${{ fromJson()}}
-
-# jobs:
-#   init:
-#     runs-on: macos-latest
-#     steps:
-#       - name: checkout code
-#         uses: actions/checkout@v2
-
-#       - id: step1
-#         name: set vars
-#         run: |
-#           IFS=$'\n'
-#           for vars in $(yq e '.variables[] | .name + "=" + .value' variables/variables.yml); do
-#             echo "$vars"
-#             echo "$vars" >> $GITHUB_OUTPUT
-#           done
-
-#         # run: echo "test=Hello world" >> $GITHUB_OUTPUT
-
-#       - run: |
-#           echo "VAR_01 --> ${{ steps.step1.outputs.MY_VAR_01 }}"
-#           echo "VAR_02 --> ${{ steps.step1.outputs.MY_VAR_02 }}"
-#           echo "VAR_03 --> ${{ steps.step1.outputs.MY_VAR_03 }}"
-#           echo "VAR_04 --> ${{ steps.step1.outputs.MY_VAR_04 }}"
-
-
-  # build:
-  #   runs-on: macos-latest
-  #   needs: init
-  #   steps:
-  #     - name: build
-  #       run: |
-  #         echo "${{ env.VAR_01 }}"
-  #         echo "VAR_01 --> ${{ steps.step1.outputs.MY_VAR_01 }}"
-
-
-
-
-
-      # echo "${{ steps.step1.outputs.test }}"
-
-    # - name: Show variables
-    #   run: |
-    #     echo "------------------------------------------------------------"
-    #     echo "MY_VAR_01: ${{ env.MY_VAR_01 }}"
-    #     echo "MY_VAR_02: ${{ env.MY_VAR_02 }}"
-    #     echo "MY_VAR_03: ${{ env.MY_VAR_03 }}"
-    #     echo "MY_VAR_04: ${{ env.MY_VAR_04 }}"
-
-
-
-    # - uses: ricardoysh/pipe-ios
-    #   with:
-    #     org: ricardoysh
-    #     repo: pipe-ios/variables/variables.yml
-    #     groups: |
-    #       ricardoysh/pipe-ios/variables/variables.yml
-    # - name: print variables
-    #   run: |
-    #     env | sort
-
-      # - name: checkout code
-      #   uses: actions/checkout@v2
-
-      # # - name: install yq
-      # #   run: jq --version
-
-      # - name: check dependencies
-      #   run: |
-      #     echo "Verificando as ferramentas necessárias:"
-      #     echo "---------------------------------"
-      #     xcodebuild -version
-      #     # xcodebuild -help
-      #     echo "---------------------------------"
-      #     pod --version
-      #     echo "---------------------------------"
-      #     fastlane -v
-      #     echo "---------------------------------"
-      #     gem -v
-      #     echo "---------------------------------"
-      #     node -v
-      #     echo "---------------------------------"
-
-      #     echo "-------------- **fim** --------------"
-
-      # - name: Load variables
-      #   run: |
-      #     IFS=$'\n'
-      #     for vars in $(yq e '.variables[] | .name + "=" + .value' variables/variables.yml); do
-      #       echo "$vars"
-      #       echo "$vars" >> $GITHUB_ENV
-      #     done
-
-      # # - name: debug msgs
-      # #   run: |
-          
-      # #     echo "::notice::Missing semicolon"
-      # #     echo "::warning::Missing semicolon"
-      # #     echo "::error::Missing semicolon"
-      # #     echo "::debug::Missing semicolon"
-
-
-
-      # #     echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
-      # #     echo "::warning file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
-      # #     echo "::error file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
-
-      # # - name: Set environment variable
-      # #   run: echo "MY_ENV_VAR=myValue" >> $GITHUB_ENV
+  set_vars:
+    uses: ./.github/workflows/vars.yml
   
-      # - name: Use environment variable
-      #   run: |
-      #     echo "Recuperando variáveis do projeto..."
-      #     echo "-----------------------------------------"
-      #     # echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
-      #     echo "VAR1 -----> $MY_VAR_01"
-      #     echo "VAR2 -----> $MY_VAR_02"
-      #     echo "VAR3 -----> $MY_VAR_03"
-      #     echo "VAR4 -----> $MY_VAR_04"
-      #     echo "VAR_WEB --> $MY_VAR_WEB1"
-      #     echo "MY_VAR_WEB5 ----> $MY_VAR_WEB5"
-      #     echo "VAR_SPACE_01 ---> $VAR_SPACE_01"
-      #     echo "VAR_SPACE_02 ---> $VAR_SPACE_02"
-      #     echo "VAR_SPACE_03 ---> $VAR_SPACE_03"
-        
+  # prepare:
+  #   needs: vars
+  #   runs-on: macos-latest
 
-      # - name: check ambient
-      #   run: |
-      #     # echo $GITHUB_REF
-      #     # echo ${{github.ref}}
-      #     if [[ $GITHUB_REF == "refs/heads/main" || "refs/heads/master" ]]; then
-      #       echo "Identificado -------> AMBIENTE DE PRODUCAO"
-      #     elif [[ $GITHUB_REF == "refs/heads/release" ]]; then
-      #       echo "Identificado -------> AMBIENTE DE HOMOLOGACAO"
-      #     elif [[ $GITHUB_REF == "refs/heads/develop" ]]; then
-      #       echo "Identificado -------> AMBIENTE DE DESENVOLVIMENTO"
-      #     fi
-      
-      # - name: build-producao
-      #   if: github.ref == 'refs/heads/main'
-      #   run: |
-      #     echo "build production"
-      
-      # - name: build-homologacao
-      #   if: github.ref == 'refs/heads/release'
-      #   run: |
-      #     echo "build homologation"
-      # - name: build-develop
-      #   if: github.ref == 'refs/heads/develop'
-      #   run: |
-      #     echo "build development"
+    # steps:
+    #   - name: Checkout repository
+    #     uses: actions/checkout@v4
+
+    #   - name: display vars
+    #     run: |
+    #       echo "## Display Pipeline Variables ##"
+    #       echo "${{ needs.set-variables.outputs.VAR1 }}"
+          
  
-      # - name: get secret
-      #   env:
-      #     MY_SECRET: ${{ secrets.MY_SECRET_NAME }}"
-      #     MY_PASS: ${{ secrets.SECRET_PASS }}"
-      #   run: |
-      #     echo "MY_SECRET:$MY_SECRET"
-      #     echo "MY_PASS:$MY_PASS"
+  # build da aplicacao ##
+  build:
+    name: build-ios
+    needs: set_vars
+    uses: ricardoysh/pipeline-core/.github/workflows/build-ios.yml@
+    with:
+      SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
+      ORG: ${{ needs.set_vars.outputs.ORG }}
 
-  
-  ## build da aplicacao ##
-  # build:
-  #   name: build-ios
-  #   needs: [init]
-  #   uses: ricardoysh/pipeline-core/.github/workflows/build-ios.yml@main
-  # ## escaneamento de cod com sonar ##        
-  # sonar:
-  #   name: run sonar scan
-  #   needs: [build]
-  #   uses: ricardoysh/pipeline-core/.github/workflows/sonar-ios.yml@main
-  # ## ofuscacao de codigo ##
-  # obfuscate:
-  #   name: run obfuscate code
-  #   needs: [sonar]
-  #   uses: ricardoysh/pipeline-core/.github/workflows/obfuscate-ios.yml@main
+  ## escaneamento de cod com sonar ##        
+  sonar:
+    name: run sonar scan
+    needs: build
+    uses: ricardoysh/pipeline-core/.github/workflows/sonar-ios.yml@main
+    with:
+      SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
+      ORG: ${{ needs.set_vars.outputs.ORG }}
+
+  ## ofuscacao de codigo ##
+  obfuscate:
+    name: run obfuscate code
+    needs: sonar
+    uses: ricardoysh/pipeline-core/.github/workflows/obfuscate-ios.yml@main
+    with:
+      SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
+      ORG: ${{ needs.set_vars.outputs.ORG }}
 
   # approve:
   #   runs-on: ubuntu-latest
