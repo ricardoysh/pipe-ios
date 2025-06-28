@@ -20,8 +20,7 @@ jobs:
     #       echo "## Display Pipeline Variables ##"
     #       echo "${{ needs.set-variables.outputs.VAR1 }}"
           
- 
-  # build da aplicacao ##
+   # build da aplicacao ##
   build:
     name: build-ios
     uses: ricardoysh/pipeline-core/.github/workflows/build-ios.yml@main
