@@ -4,8 +4,8 @@ on:
   push
 
 jobs:
-  set_vars:
-    uses: ./.github/workflows/vars.yml
+  # set_vars:
+  #   uses: ./.github/workflows/vars.yml
   
   # prepare:
   #   needs: vars
@@ -24,11 +24,12 @@ jobs:
   # build da aplicacao ##
   build:
     name: build-ios
-    needs: set_vars
     uses: ricardoysh/pipeline-core/.github/workflows/build-ios.yml@main
     with:
-      SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
-      ORG: ${{ needs.set_vars.outputs.ORG }}
+      vars_file: ./github/variables.yml
+
+      # SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
+      # ORG: ${{ needs.set_vars.outputs.ORG }}
 
   ## escaneamento de cod com sonar ##        
   sonar:
@@ -36,8 +37,9 @@ jobs:
     needs: set_vars
     uses: ricardoysh/pipeline-core/.github/workflows/sonar-ios.yml@main
     with:
-      SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
-      ORG: ${{ needs.set_vars.outputs.ORG }}
+      vars_file: ./github/variables.yml
+      # SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
+      # ORG: ${{ needs.set_vars.outputs.ORG }}
 
   ## ofuscacao de codigo ##
   obfuscate:
@@ -45,8 +47,9 @@ jobs:
     needs: set_vars
     uses: ricardoysh/pipeline-core/.github/workflows/obfuscate-ios.yml@main
     with:
-      SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
-      ORG: ${{ needs.set_vars.outputs.ORG }}
+      vars_file: ./github/variables.yml
+      # SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
+      # ORG: ${{ needs.set_vars.outputs.ORG }}
 
   # approve:
   #   runs-on: ubuntu-latest

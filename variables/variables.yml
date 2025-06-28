@@ -1,36 +1,5 @@
 variables:
-  - name: MY_VAR_01
-    value: teste/teste.com
+  SCHEME: 'Lolapalooza'
+  ORG:    'Rico_CORPORATION'
+
   
-  - name: MY_VAR_02
-    value: teste02-02/teste-02-02.com
-
-  - name: MY_VAR_03
-    value: teste03-03/teste03-03.com
-
-  - name: MY_VAR_04
-    value: "@_XXXX import xpto"
-    
-  - name: MY_VAR_WEB1
-    value: www.terra.com.br/xxxx/lkasjdfasdfx
-
-  - name: MY_VAR_WEB2
-    value: www.uosl.com/xdfsdfpto/abcd
-
-  - name: MY_VAR_WEB3
-    value: www.tatata.com/kkkkkkkkkk
-
-  - name: MY_VAR_WEB4
-    value: www.batata.csddff/sdfsdf/sdfsdfee
-
-  - name: MY_VAR_WEB5
-    value: www.bola7.com/xdfffff
-  
-  - name: VAR_SPACE_01
-    value: "@_Ois xxxx zzzzz yyyyyy"
-  
-  - name: VAR_SPACE_02
-    value: "#fffff ccccc 4444444"
-  
-  - name : VAR_SPACE_03
-    value: "%2222 $99999 &000000"
