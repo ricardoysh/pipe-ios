@@ -25,7 +25,7 @@ jobs:
   build:
     name: build-ios
     needs: set_vars
-    uses: ricardoysh/pipeline-core/.github/workflows/build-ios.yml@
+    uses: ricardoysh/pipeline-core/.github/workflows/build-ios.yml@main
     with:
       SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
       ORG: ${{ needs.set_vars.outputs.ORG }}
