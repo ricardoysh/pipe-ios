@@ -19,7 +19,7 @@ jobs:
     #     run: |
     #       echo "## Display Pipeline Variables ##"
     #       echo "${{ needs.set-variables.outputs.VAR1 }}"
-          
+
    # build da aplicacao ##
   build:
     name: build-ios
