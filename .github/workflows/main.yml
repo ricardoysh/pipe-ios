@@ -33,7 +33,7 @@ jobs:
   ## escaneamento de cod com sonar ##        
   sonar:
     name: run sonar scan
-    needs: build
+    needs: set_vars
     uses: ricardoysh/pipeline-core/.github/workflows/sonar-ios.yml@main
     with:
       SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
@@ -42,7 +42,7 @@ jobs:
   ## ofuscacao de codigo ##
   obfuscate:
     name: run obfuscate code
-    needs: sonar
+    needs: set_vars
     uses: ricardoysh/pipeline-core/.github/workflows/obfuscate-ios.yml@main
     with:
       SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
@@ -61,4 +61,3 @@ jobs:
   #   needs: [obfuscate]
   #   uses: ricardoysh/pipeline-core/.github/workflows/release-ios.yml@main
 
-  
