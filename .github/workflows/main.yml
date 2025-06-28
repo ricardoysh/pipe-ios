@@ -26,7 +26,7 @@ jobs:
     name: build-ios
     uses: ricardoysh/pipeline-core/.github/workflows/build-ios.yml@main
     with:
-      vars_file: ./github/variables/variables.yml
+      vars_file: ./variables/variables.yml
 
       # SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
       # ORG: ${{ needs.set_vars.outputs.ORG }}
@@ -37,7 +37,7 @@ jobs:
     needs: build
     uses: ricardoysh/pipeline-core/.github/workflows/sonar-ios.yml@main
     with:
-      vars_file: ./github/variables/variables.yml
+      vars_file: ./variables/variables.yml
       # SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
       # ORG: ${{ needs.set_vars.outputs.ORG }}
 
@@ -47,7 +47,7 @@ jobs:
     needs: sonar
     uses: ricardoysh/pipeline-core/.github/workflows/obfuscate-ios.yml@main
     with:
-      vars_file: ./github/variables/variables.yml
+      vars_file: ./variables/variables.yml
       # SCHEME: ${{ needs.set_vars.outputs.SCHEME }}
       # ORG: ${{ needs.set_vars.outputs.ORG }}
 
