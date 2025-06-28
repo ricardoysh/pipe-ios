@@ -34,7 +34,7 @@ jobs:
   ## escaneamento de cod com sonar ##        
   sonar:
     name: run sonar scan
-    needs: set_vars
+    needs: build
     uses: ricardoysh/pipeline-core/.github/workflows/sonar-ios.yml@main
     with:
       vars_file: ./github/variables.yml
@@ -44,7 +44,7 @@ jobs:
   ## ofuscacao de codigo ##
   obfuscate:
     name: run obfuscate code
-    needs: set_vars
+    needs: sonar
     uses: ricardoysh/pipeline-core/.github/workflows/obfuscate-ios.yml@main
     with:
       vars_file: ./github/variables.yml
