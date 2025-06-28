@@ -1,5 +1,5 @@
 variables:
-  SCHEME: 'Lolapalooza'
+  SCHEME: 'mySCHEME_Lolapalooza'
   ORG:    'Rico_CORPORATION'
 
   
