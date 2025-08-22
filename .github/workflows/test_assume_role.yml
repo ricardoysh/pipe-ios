@@ -1,0 +1,14 @@
+name: Test Assume Role
+
+on:
+  push
+
+jobs:
+  init:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: init
+        run: |
+          echo "teste"
+
