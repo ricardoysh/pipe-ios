@@ -5,10 +5,12 @@ on:
 
 jobs:
   init:
-    runs-on: ubuntu-latest
+    runs-on: my-runner-ec2
 
     steps:
       - name: init
         run: |
           echo "teste"
+          aws help
+          
 

@@ -1,7 +1,8 @@
 name: pipeline-ios-test
 
 on:
-  push
+  #push
+  workflow_dispatch
 
 jobs:
   # set_vars:
