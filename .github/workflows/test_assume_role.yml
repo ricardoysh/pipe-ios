@@ -5,12 +5,12 @@ on:
 
 jobs:
   init:
-    runs-on: my-runner-ec2
+    runs-on: 'my-runner-ec2'
 
     steps:
       - name: init
         run: |
           echo "teste"
           aws help
-          
+
 
