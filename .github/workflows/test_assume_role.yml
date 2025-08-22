@@ -8,9 +8,12 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: init
+      - name: Install AWS CLI
         run: |
-          echo "teste"
-          aws help
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unzip awscliv2.zip
+          sudo ./aws/install
+          aws --version
 
+          aws sts get-caller-identity
 
